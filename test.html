@@ -10,6 +10,7 @@
   <script>
     const p = new Promise((resolve,reject)=>{
       // 现在只是假设在pending状态，那么要保证先指定回调再改变状态
+      // ..
       setTimeout(() => {
         // resolve(1) //value
         reject(1) //reason
