@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script src="./lib/Promise.js"></script>
+  <script>
+    const p = new Promise((resolve,reject)=>{
+      // 现在只是假设在pending状态，那么要保证先指定回调再改变状态
+      setTimeout(() => {
+        // resolve(1) //value
+        reject(1) //reason
+        console.log('reject状态改变之后');
+      }, 100);
+
+    })
+    // 执行then指定回调函数， 把回调函数存入callbacks里面
+    p.then(
+      value=>{
+        console.log('onResolved()1',value);
+      },
+      reason=>{
+        console.log('onRejected()1',reason);
+      }
+    )
+    p.then(
+      value=>{
+        console.log('onResolved()2',value);
+      },
+      reason=>{
+        console.log('onRejected()2',reason);
+      }
+    )
+    
+  </script>
+</body>
+</html>
